@@ -1,0 +1,111 @@
+.card {
+    padding: 16px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 1px 1px 5px 1px #f3f3f3;
+    border-radius: 18px;
+}
+
+.card:hover {
+    background-color: #f9f9f9;
+}
+
+.card-content {
+    color: #666;
+}
+
+.card-content h3 {
+    padding-bottom: 10px;
+    font-size: 18px;
+}
+
+.card-content p {
+    padding-bottom: 10px;
+    font-size: 14px;
+}
+
+.descricao {
+    width: 80%;
+    padding: 0px;
+}
+
+.texto-descricao {
+    width: 100%;
+    color: #999;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Modal */
+.modal-content {
+    padding: 50px;
+    width: 100%;
+    color: #444;
+}
+
+.ReactModal__Content {
+    display: flex;
+    height: 40%;
+}
+
+.modal-descricao {
+    margin-bottom: 15px;
+}
+
+.modal-localizacao {
+    margin-bottom: 15px;
+}
+
+.modal-content PrimaryButton {
+    margin-bottom: 25px;
+}
+
+
+/* Adequando a modal para mobile */
+@media only screen and (max-width: 512px) {
+    .modal-content {
+        padding: 0px;
+    }
+
+    .modal-content h2 {
+        font-size: 18px !important;
+    }
+
+    .modal-content p {
+        font-size: 14px;
+    }
+
+    .ReactModal__Content {
+        display: flex;
+        height: 55%;
+    }
+
+    .modal-descricao {
+        margin-bottom: 15px;
+    }
+
+    .modal-localizacao {
+        margin-bottom: 15px;
+    }
+
+    .modal-content PrimaryButton {
+        margin-bottom: 25px;
+    }
+}
+
+@media only screen and (min-width: 512px) and (max-width: 1024px) {
+    .modal-content {
+        padding: 0px;
+    }
+
+    .modal-content h2 {
+        font-size: 22px !important;
+    }
+
+    .ReactModal__Content {
+        display: flex;
+        height: 45%;
+    }
+
+}

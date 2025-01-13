@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\services\\pontoturisticoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\services\\pontoturisticoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\controllers\\pontosturisticoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\controllers\\pontosturisticoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\controllers\\pontosturisticoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\controllers\\pontosturisticoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\repositories\\pontoturisticorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\repositories\\pontoturisticorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|c:\\projetos\\pontos-turisticos\\backend\\pontosturisticosapi\\pontosturisticosapi\\services\\pontoturisticoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70697E13-9686-4444-92B0-942429E5F012}|PontosTuristicosAPI\\PontosTuristicosAPI.csproj|solutionrelative:pontosturisticosapi\\services\\pontoturisticoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,17 +30,30 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "PontosTuristicosAPI\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Properties\\launchSettings.json",
+              "RelativeToolTip": "PontosTuristicosAPI\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-01-13T02:26:00.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
               "Title": "PontoTuristicoService.cs",
               "DocumentMoniker": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Services\\PontoTuristicoService.cs",
               "RelativeDocumentMoniker": "PontosTuristicosAPI\\Services\\PontoTuristicoService.cs",
               "ToolTip": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Services\\PontoTuristicoService.cs",
               "RelativeToolTip": "PontosTuristicosAPI\\Services\\PontoTuristicoService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:50:15.138Z",
               "EditorCaption": ""
@@ -49,20 +66,20 @@
               "RelativeDocumentMoniker": "PontosTuristicosAPI\\Repositories\\PontoTuristicoRepository.cs",
               "ToolTip": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Repositories\\PontoTuristicoRepository.cs",
               "RelativeToolTip": "PontosTuristicosAPI\\Repositories\\PontoTuristicoRepository.cs",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAYwAoAAABAAAAAAAAAAA==",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAuwAoAAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:44:25.638Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "PontosTuristicosController.cs",
               "DocumentMoniker": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Controllers\\PontosTuristicosController.cs",
               "RelativeDocumentMoniker": "PontosTuristicosAPI\\Controllers\\PontosTuristicosController.cs",
               "ToolTip": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Controllers\\PontosTuristicosController.cs",
               "RelativeToolTip": "PontosTuristicosAPI\\Controllers\\PontosTuristicosController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAE8AAAABAAAAAAAAAA==",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:42:31.244Z",
               "EditorCaption": ""
@@ -75,7 +92,7 @@
               "RelativeDocumentMoniker": "PontosTuristicosAPI\\Program.cs",
               "ToolTip": "C:\\Projetos\\pontos-turisticos\\backend\\PontosTuristicosAPI\\PontosTuristicosAPI\\Program.cs",
               "RelativeToolTip": "PontosTuristicosAPI\\Program.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAjAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-01-12T15:41:05.749Z",
               "EditorCaption": ""

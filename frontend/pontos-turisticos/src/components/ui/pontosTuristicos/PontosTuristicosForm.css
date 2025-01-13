@@ -1,0 +1,101 @@
+/* Componentes do form */
+.form-group-container {
+    width: 70%;
+    margin: auto;
+}
+
+.form-group {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    color: #444;
+    min-width: 100px;
+}
+
+.label {
+    margin-right: 15px;
+    width: 110px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.label-localizacao {
+    margin-right: 15px;
+    width: 110px;
+    font-size: 14px;
+    color: #444;
+}
+
+select {
+    border-radius: 20px;
+    padding: 2px 12px 2px 12px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    color: #888888;
+}
+
+textarea {
+    border-radius: 20px;
+    padding: 2px 12px 2px 12px;
+    line-height: 30px;
+    border: 1px solid #ccc;
+    color: #888888;
+}
+
+textarea:required {
+    border: 2px solid #fb4400;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-content h2 {
+    margin: 3vh 0vh 3vh 0vh;
+}
+
+
+/* Adequando o formulário para mobile */
+@media only screen and (max-width: 768px) {
+
+    /* Modal */
+    .modal-content h2 {
+        margin: 4vh 0vh 4vh 0vh;
+        font-size: 2vh;
+    }
+
+    /* Form */
+    .form-group-container {
+        width: 100%;
+        margin: auto;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .form-group label {
+        margin-left: 15px;
+    }
+
+    .label-localizacao {
+        margin-left: 10px;
+    }
+
+    .localizacao-group select {
+        margin-bottom: 10px;
+        padding: 2px 12px 2px 12px;
+        height: 36px;
+        width: 100%;
+    }
+
+}
