@@ -11,11 +11,10 @@
     border: none;
     cursor: pointer;
     border: 1px solid var(--primaryColor);
-
 }
 
 .primaryButton:hover {
-    background-color: #e03e00;
+    background-color: var(--primaryColor);
 }
 
 .primaryButton:disabled {

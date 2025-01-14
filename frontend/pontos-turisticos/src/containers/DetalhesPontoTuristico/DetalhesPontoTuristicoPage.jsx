@@ -1,10 +1,13 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import Navbar from '../../components/ui/navbar/Navbar';
-import './CadastrarPontoTuristico.css';
 import PontosTuristicosForm from '../../components/ui/pontosTuristicos/PontosTuristicosForm';
+import './DetalhesPontoTuristicoPage.css';
 
+const DetalhesPontoTuristico = () => {
 
-const CadastrarPontoTuristico = () => {
+    useEffect(() => {
+        document.title = 'Detalhes';
+    }, []);
 
     return (
         <Fragment>
@@ -13,11 +16,11 @@ const CadastrarPontoTuristico = () => {
             </header>
             <div className="container">
                 <div className="form-pontos-turisticos">
-                    <PontosTuristicosForm />
+                    <PontosTuristicosForm cadastro={false} />
                 </div>
             </div>
         </Fragment>
     );
 }
 
-export default CadastrarPontoTuristico;
+export default DetalhesPontoTuristico;

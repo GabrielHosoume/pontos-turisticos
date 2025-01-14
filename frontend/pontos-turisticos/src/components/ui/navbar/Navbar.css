@@ -7,7 +7,7 @@
     top: 0;
     left: 0;
     width: 100%;
-    padding: 20px 12%;
+    padding: 0px 18%;
     background-color: var(--primaryColor);
     display: flex;
     justify-content: space-between;
@@ -20,6 +20,10 @@
     color: var(--secondaryColor);
     font-weight: 400;
     text-decoration: none;
+}
+
+.logo-image {
+    width: 100px;
 }
 
 /* Itens do menu */
@@ -113,5 +117,6 @@
 
     .navBar a {
         font-size: 1.5rem;
+        margin-left: 0px;
     }
 }

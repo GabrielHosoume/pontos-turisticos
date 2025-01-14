@@ -1,36 +1,53 @@
-import React, { useEffect, useState, Fragment } from 'react';
+import React, { useEffect, useState, Fragment, useContext } from 'react';
+import ReactPaginate from 'react-paginate';
 import axios from 'axios';
+import { AppContext } from '../../AppContext';
+import config from '../../../config';
 import Navbar from '../../components/ui/navbar/Navbar';
 import PrimaryButton from '../../components/ui/buttons/PrimaryButton';
 import Input from '../../components/ui/inputs/Input';
-import './HomePage.css';
 import CardPontoTuristico from '../../components/ui/cards/CardPontoTuristico';
-import ReactPaginate from 'react-paginate';
-import config from '../../../config';
-
+import './HomePage.css';
 
 const HomePage = () => {
+    // Infos dos pontos
+    const { state, clearContext } = useContext(AppContext);
     const [pontosTuristicos, setPontosTuristicos] = useState([]);
     const [pontosTuristicosOriginais, setPontosTuristicosOriginais] = useState(pontosTuristicos);
+
+    // Controle e URL
+    const [busca, setBusca] = useState(false);
     const [paginaAtual, setPaginaAtual] = useState(0);
     const [itensPorPagina] = useState(3);
     const [termoBusca, setTermoBusca] = useState('');
     const apiUrl = config.apiUrl;
 
+    // Reset do context e fetch dos pontos
     useEffect(() => {
+        document.title = 'Início';
+        getPontosTuristicos();
+        clearContext();
+    }, []);
+
+    const getPontosTuristicos = async () => {
         axios.get(`${apiUrl}/pontosturisticos/lista`)
             .then((response) => {
                 setPontosTuristicos(response.data);
                 setPontosTuristicosOriginais(response.data);
             })
             .catch((error) => console.error('Erro:', error));
-    }, []);
-
-    const handleCliquePagina = ({ selected }) => {
-        setPaginaAtual(selected);
     };
 
+    /* HANDLERS */
     const handleBusca = () => {
+
+        if (termoBusca !== '') {
+            setBusca(true);
+            document.title = 'Resultados';
+        } else {
+            setBusca(false);
+            document.title = 'Início';
+        }
 
         const pontosFiltro = pontosTuristicosOriginais.filter((ponto) =>
             ponto.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
@@ -38,6 +55,23 @@ const HomePage = () => {
             ponto.descricao.toLowerCase().includes(termoBusca.toLowerCase())
         );
         setPontosTuristicos(pontosFiltro);
+    };
+
+    const handleBuscaBotao = () => {
+
+        setBusca(true);
+        document.title = 'Resultados';
+
+        const pontosFiltro = pontosTuristicosOriginais.filter((ponto) =>
+            ponto.nome.toLowerCase().includes(termoBusca.toLowerCase()) ||
+            ponto.referencia.toLowerCase().includes(termoBusca.toLowerCase()) ||
+            ponto.descricao.toLowerCase().includes(termoBusca.toLowerCase())
+        );
+        setPontosTuristicos(pontosFiltro);
+    };
+
+    const handleCliquePagina = ({ selected }) => {
+        setPaginaAtual(selected);
     };
 
     const inicioIndex = paginaAtual * itensPorPagina;
@@ -59,10 +93,10 @@ const HomePage = () => {
                         onChange={(e) => setTermoBusca(e.target.value)}
                         onKeyUp={handleBusca}
                     />
-                    <PrimaryButton onClick={handleBusca}>Buscar</PrimaryButton>
+                    <PrimaryButton onClick={handleBuscaBotao}>Buscar</PrimaryButton>
                 </div>
                 <div className="lista-content">
-                    {itensExibir.length > 0 ? (
+                    {busca && itensExibir.length > 0 ? (
                         itensExibir.map((ponto) => (
                             <CardPontoTuristico
                                 key={ponto.idPontoTuristico}
@@ -73,10 +107,10 @@ const HomePage = () => {
                             />
                         ))
                     ) : (
-                        <div className='nenhum-ponto'><p style={{ fontSize: '18px', fontWeight: 'bold', color: '#444' }}>Nenhum ponto turístico foi encontrado :(</p></div>
+                        busca && (<div className='nenhum-ponto'><p style={{ fontSize: '18px', fontWeight: 'bold', color: '#444' }}>Não encontrei nenhum resultado para a sua busca :(</p></div>)
                     )}
                 </div>
-                {pontosTuristicos.length > itensPorPagina && (
+                {busca && pontosTuristicos.length > itensPorPagina && (
                     <ReactPaginate
                         previousLabel={"Anterior"}
                         nextLabel={"Próximo"}

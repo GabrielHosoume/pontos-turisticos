@@ -1,28 +1,54 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import { AppContext } from '../../../AppContext';
 import config from '../../../../config';
 import Modal from 'react-modal';
-import './PontosTuristicosForm.css';
 import Input from '../inputs/Input';
 import PrimaryButton from '../buttons/PrimaryButton';
-import { useNavigate } from 'react-router-dom';
 import SecondaryButton from '../buttons/SecondaryButton';
+import './PontosTuristicosForm.css';
+import ModalCustom from '../modal/Modal';
 
-const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
+const PontosTuristicosForm = ({ cadastro, initialData = {} }) => {
+    const { selectedPontoTuristico } = useContext(AppContext);
+
+    // Infos do ponto turístico
     const [nome, setNome] = useState(initialData.nome || '');
     const [uf, setUf] = useState(initialData.uf || '');
     const [cidade, setCidade] = useState(initialData.cidade || '');
     const [referencia, setReferencia] = useState(initialData.referencia || '');
     const [descricao, setDescricao] = useState(initialData.descricao || '');
+
+    // Controle
     const [descricaoRequired, setDescricaoRequired] = useState(initialData.descricao || '');
     const [cidadesSugestao, setCidadesSugestao] = useState([]);
     const [modalAberta, setModalAberta] = useState(false);
     const [erroCidade, setErroCidade] = useState(false);
     const [erroCadastro, setErroCadastro] = useState('');
+    const [readOnly, setReadOnly] = useState(false);
     const navigate = useNavigate();
+
+    // URL para requests
     const apiUrl = config.apiUrl;
     const wsUrl = config.wsUrl;
 
+    // Tratamento para saber se é modo detalhe ou cadastro
+    useEffect(() => {
+        if (selectedPontoTuristico && !cadastro) {
+            setNome(selectedPontoTuristico.nome);
+            setUf(selectedPontoTuristico.ufCodigoIbge);
+            setCidade(selectedPontoTuristico.cidade);
+            setReferencia(selectedPontoTuristico.referencia);
+            setDescricao(selectedPontoTuristico.descricao);
+            setReadOnly(true);
+        } else {
+            setReadOnly(false);
+        }
+    }, [selectedPontoTuristico]);
+
+    /* REQUESTS */
+    // Cadastro
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -50,15 +76,7 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
         }
     };
 
-    const handleVoltarOnclick = () => {
-        navigate('/');
-    };
-
-    const handleModalClick = () => {
-        setModalAberta(false);
-        navigate('/');
-    };
-
+    // Obter cidade do WebService
     const buscarCidades = async (ufSelecionada) => {
         try {
             const response = await axios.get(wsUrl.replace('{ufCodigoIbge}', ufSelecionada));
@@ -70,10 +88,6 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
         }
     };
 
-    const handleDescricaoBlur = () => {
-        !descricao ? setDescricaoRequired(true) : setDescricaoRequired(false);
-    };
-
     useEffect(() => {
         if (uf) {
             buscarCidades(uf);
@@ -82,9 +96,25 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
         }
     }, [uf]);
 
+    /* HANDLERS */
+    const handleVoltarOnclick = () => {
+        navigate('/');
+    };
+
+    const handleModalClick = () => {
+        setModalAberta(false);
+        erroCadastro === '' && navigate('/');
+        setErroCadastro('');
+    };
+
+    const handleDescricaoBlur = () => {
+        !descricao ? setDescricaoRequired(true) : setDescricaoRequired(false);
+    };
+
     return (
         <div className="form-group-container">
-            <h3 className='title'>Cadastrar novo ponto turístico</h3>
+            {!cadastro ? <h3 className='title'>Detalhes do ponto turístico</h3> :
+                <h3 className='title'>Cadastrar novo ponto turístico</h3>}
             <form onSubmit={handleSubmit}>
                 <div className='form-group'>
                     <div className="label">
@@ -98,6 +128,7 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
                         onChange={(e) => setNome(e.target.value)}
                         maxLength={50}
                         readOnly={readOnly}
+                        disabled={readOnly}
                         style={{ width: '100%' }}
                         required={!nome} />
                 </div>
@@ -111,6 +142,7 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
                         <select
                             value={uf}
                             onChange={(e) => setUf(e.target.value)}
+                            readOnly={readOnly}
                             disabled={readOnly}
                             style={{ marginRight: '10px' }}>
                             <option value="">Selecione</option>
@@ -149,14 +181,18 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
                             value={cidade}
                             onChange={(e) => setCidade(e.target.value)}
                             list="cidades"
-                            disabled={!uf || readOnly}
+                            readOnly={!uf || readOnly}
+                            disabled={readOnly}
                             required={!cidade}
                             style={{ width: '100%' }}
                         />
                         <datalist id="cidades">
-                            {cidadesSugestao.map((c, index) => (
-                                <option key={`${c}-${index}`} value={c.nome} />
-                            ))}
+                            {cidadesSugestao
+                                .sort((a, b) => a.nome.localeCompare(b.nome))
+                                .filter(c => c.nome.includes(cidade))
+                                .map((c, index) => (
+                                    <option key={`${c.nome}-${index}`} value={c.nome} />)
+                                )}
                         </datalist>
                         {erroCidade && (
                             <p style={{ color: 'red' }}>
@@ -179,6 +215,7 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
                             value={referencia}
                             onChange={(e) => setReferencia(e.target.value)}
                             readOnly={readOnly}
+                            disabled={readOnly}
                             required={!referencia}
                             style={{ width: '100%' }}
                         />
@@ -196,45 +233,34 @@ const PontosTuristicosForm = ({ readOnly = false, initialData = {} }) => {
                             onChange={(e) => setDescricao(e.target.value)}
                             maxLength={100}
                             readOnly={readOnly}
+                            disabled={readOnly}
                             required={descricaoRequired}
                             onBlur={handleDescricaoBlur}
                             style={{ width: '100%', minHeight: '90px' }}
                         />
                     </div>
                 </div>
-
-                {!readOnly && (
-                    <PrimaryButton style={{ float: 'right' }} type="submit">Cadastrar</PrimaryButton>
-                )}
-
+                {
+                    !readOnly && (
+                        <PrimaryButton style={{ float: 'right' }} type="submit">Cadastrar</PrimaryButton>)
+                }
             </form>
+            <SecondaryButton style={{ float: 'left', marginBottom: '15px' }} onClick={handleVoltarOnclick}>Voltar</SecondaryButton>
 
-            {!readOnly && (
-                <SecondaryButton style={{ float: 'left', marginBottom: '15px' }} onClick={handleVoltarOnclick}>Voltar</SecondaryButton>
-            )}
-
-            <Modal
+            <ModalCustom
                 isOpen={modalAberta}
-                onRequestClose={() => setModalAberta(false)}
-                contentLabel="Cadastro Concluído"
-                ariaHideApp={false}
-                style={{
-                    content: {
-                        margin: 'auto',
-                        borderRadius: '20px',
-                        maxWidth: '80%',
-                    },
-                }} >
+                onClose={handleModalClick}
+                title={erroCadastro === '' ? "Sucesso" : "Falha"}>
                 <div className="modal-content">
                     {
-                        erroCadastro === '' && (<h2>Sucesso! O novo ponto turístico foi cadastrado.</h2>)
+                        erroCadastro === '' && (<p>O novo ponto turístico foi cadastrado!</p>)
                     }
                     {
-                        erroCadastro !== '' && (<h2>{erroCadastro}</h2>)
+                        erroCadastro !== '' && (<p>{erroCadastro}</p>)
                     }
                     <PrimaryButton onClick={handleModalClick}>Fechar</PrimaryButton>
                 </div>
-            </Modal>
+            </ModalCustom>
         </div >
     );
 };

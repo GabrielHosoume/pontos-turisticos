@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import './Navbar.css';
 import { FaBars, FaTimes } from 'react-icons/fa';
+import './Navbar.css';
 
 const Navbar = () => {
     const navRef = useRef();
@@ -18,23 +18,19 @@ const Navbar = () => {
 
     return (
         <header className="header">
-            <Link to="/" className='logo'><span><strong>Pontos</strong></span><span style={{ fontWeight: '200' }}>Turísticos</span></Link>
+            <Link to="/">
+                <img src="/src/assets/logo.png" alt="Logo" className="logo-image" />
+            </Link>
 
             <nav className='navBar' ref={navRef}>
                 <Link
                     to="/"
                     className={activeNav === "/" || location.pathname === "/" ? "active" : ""}
-                    onClick={() => handleNavClick("/")}
-                >
-                    Pontos Turísticos
-                </Link>
+                    onClick={() => handleNavClick("/")}>Pontos Turísticos</Link>
                 <Link
                     to="/cadastrar"
                     className={activeNav === "/cadastrar" || location.pathname === "/cadastrar" ? "active" : ""}
-                    onClick={() => handleNavClick("/cadastrar")}
-                >
-                    Cadastrar Ponto Turístico
-                </Link>
+                    onClick={() => handleNavClick("/cadastrar")}>Cadastrar Ponto Turístico</Link>
                 <button className="nav-btn nav-close-btn" onClick={showNavBar}>
                     <FaTimes />
                 </button>

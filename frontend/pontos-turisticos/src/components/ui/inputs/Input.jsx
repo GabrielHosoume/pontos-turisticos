@@ -17,7 +17,7 @@ const Input = (props) => {
                 type={props.type}
                 placeholder={props.placeholder}
                 style={props.style}
-                value={props.nome}
+                value={props.value}
                 onChange={props.onChange}
                 maxLength={props.maxLength}
                 readOnly={props.readOnly}

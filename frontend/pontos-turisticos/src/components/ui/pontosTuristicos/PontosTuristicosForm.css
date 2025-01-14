@@ -38,6 +38,11 @@ select {
     color: #888888;
 }
 
+select:disabled {
+    background-color: #f3f3f3;
+    opacity: 1;
+}
+
 textarea {
     border-radius: 20px;
     padding: 2px 12px 2px 12px;
@@ -50,16 +55,22 @@ textarea:required {
     border: 2px solid #fb4400;
 }
 
+textarea:disabled {
+    background-color: #f3f3f3;
+}
+
 .modal-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
+    padding: 0;
 }
 
-.modal-content h2 {
-    margin: 3vh 0vh 3vh 0vh;
+.modal-content p {
+    margin: 5vh 0vh 5vh 0vh;
+    font-size: 3vh;
 }
 
 
@@ -67,9 +78,9 @@ textarea:required {
 @media only screen and (max-width: 768px) {
 
     /* Modal */
-    .modal-content h2 {
+    .modal-content p {
         margin: 4vh 0vh 4vh 0vh;
-        font-size: 2vh;
+        font-size: 2.5vh;
     }
 
     /* Form */

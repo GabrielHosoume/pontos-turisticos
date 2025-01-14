@@ -28,5 +28,5 @@
 }
 
 .input:required {
-    border: 2px solid #fb4400;
+    border: 2px solid var(--primaryColor);
 }
